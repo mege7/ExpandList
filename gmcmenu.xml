@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="gmcmenu" >
+        <Require feature="dynamic-height"/>   
+        <Require feature="setprefs" />  
+</ModulePrefs>  
+<Content type="html"><![CDATA[
+
+<style type="text/css">
+
+.container_menu {
+float: left;
+}
+.menu {
+width: 84%;
+float: left;
+}
+.menu .option {
+padding: 2px;
+font-size: 12px;
+font-weight: bold;
+border: solid 1px;
+cursor: pointer;
+float: left;
+margin: 1px;
+}
+.menu .option.active, .menu .option:hover {
+background: #38BD6D;
+border: solid 1px #38BD6D;
+color: #fff;
+}
+#menu_button{ display:none; }
+
+#button_go{
+padding: 2px;
+float: left;
+width: 15%;
+height: 50%;
+padding-top: 15px;
+font-size: 22px;
+background: rgb(66, 90, 216);
+color: #fff;
+text-align: center;
+}
+
+#button_go:hover {
+background-color: rgb(28, 56, 199);
+cursor: pointer;
+}
+
+</style>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+        $(document).ready(function()
+        {
+          console.log("ojal3");
+          $(".option").click(function(){
+              
+              /*variables*/
+              var id = $(this).attr("id");
+              
+              if($(this).hasClass("desactive")){
+                $(this).removeClass( "desactive" ).addClass( "active" );
+                if( $("#menu_button").html() == "https://sites.google.com/a/roche.com/gmc/system/app/pages/search?scope=search-site&amp;q=" ){
+                  $("#menu_button").html( $("#menu_button").html() + id);
+                }else{
+                  $("#menu_button").html( $("#menu_button").html() + '+' + id);
+                }
+              }else{
+                $(this).removeClass( "active" ).addClass( "desactive" );
+                
+                /*vamos a quitar si existe*/
+                
+                $(this).find(id).each(BorrarDeUrl(id));
+                
+               /* $(this).find("+" + id){
+                  $("#menu_button").html( $("#menu_button").html().text.replace("+" + id, ""));
+                }*/
+                
+                /*$(this).find(id).function({
+                  $("#menu_button").html( $("#menu_button").html().replace(id, ""));
+                  console.log("lo tiene lo tiene!!!!");
+                });*/
+                
+                
+                
+                }
+              
+              
+              
+             /*$(this).removeClass( "desactive" ).addClass( "active" );
+              console.log("ponemos activo");
+              var id = $(this).attr("id");
+              console.log(id);
+              console.log($("#menu_button").html());
+              if( $("#menu_button").html() == "https://sites.google.com/a/roche.com/gmc/system/app/pages/search?scope=search-site&amp;q=" )
+              {
+                $("#menu_button").html( $("#menu_button").html() + id);
+                console.log("el linccc es igual");
+              }else{
+                $("#menu_button").html( $("#menu_button").html() + '+' + id)  ;
+                console.log("el linccc es diferente");
+              }*/
+              
+              
+              
+            });
+            /*$(".option.active").click(function(){
+              $(this).removeClass( "active" ).addClass( "desactive" );
+              console.log("quitamos activo");
+              console.log($("#menu_button").html());
+            });*/
+         
+            $('#button_go').click(function(){
+               window.top.location.href=$("#menu_button").html().replace("&amp;", "&");
+            })
+          
+            function BorrarDeUrl(id) {
+              console.log("lo tiene lo tiene!!!!");
+              $("#menu_button").html( $("#menu_button").html().replace(id, ""));
+              console.log($("#menu_button").html());
+            }
+          
+        });
+</script>
+
+ <div class="container_menu">
+   <div class="menu">
+     <span class="option desactive" id="xxandroid">Android</span>
+     <span class="option desactive" id="xxantispam">Anti Spam</span>
+     <span class="option desactive" id="xxbestinformed">Best Informed</span>
+     <span class="option desactive" id="xxgadgets">Gadgets</span>
+     <span class="option desactive" id="xxretention">Corporate Retention</span>
+     <span class="option desactive" id="xxretention">Janitor</span>
+     <span class="option desactive" id="xxediscovery">eDiscovery</span>
+     <span class="option desactive" id="xxfireeye">Fire Eye</span>
+     <span class="option desactive" id="xxgcal">Calendar</span>
+     <span class="option desactive" id="xxchrome">Chrome</span>
+     <span class="option desactive" id="xxcontacts">Contacts</span>
+     <span class="option desactive" id="xxgroups">Groups</span>
+     <span class="option desactive" id="xxgmail">Gmail</span>
+     <span class="option desactive" id="xxmapsapi">Maps</span>
+     <span class="option desactive" id="xxsites">Sites</span>
+     <span class="option desactive" id="xxgtalk">Talk</span>
+     <span class="option desactive" id="xxgplus">G+</span>
+     <span class="option desactive" id="xxhubcas">Hub Cas</span>
+     <span class="option desactive" id="xxios">iOS</span>
+     <span class="option desactive" id="xxmagiccalendar">Magic Calendar</span>
+     <span class="option desactive" id="xxmagiccalendar">Magic Meeting Maker</span>
+     <span class="option desactive" id="xxmit">MIT</span>
+     <span class="option desactive" id="xxmailmarshall">Mail Marshall</span>
+     <span class="option desactive" id="xxmirapoint">Mira Point</span>
+     <span class="option desactive" id="xxmobileiron">Mobile Iron</span>
+     <span class="option desactive" id="xxmta">MTA</span>
+     <span class="option desactive" id="xxsms">SMS</span>
+     <span class="option desactive" id="xxspam">Spam</span>
+     <span class="option desactive" id="xxvault">Vault</span>
+   </div>
+   <div id="button_go" class="menu option">Search</div>
+   <div id="menu_button">https://sites.google.com/a/roche.com/gmc/system/app/pages/search?scope=search-site&q=</div>
+ </div>
+
+]]></Content>
+</Module>
